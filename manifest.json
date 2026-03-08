@@ -3,7 +3,7 @@
     "name": "Tareas",
     "version": "1.0.0",
     "minAppVersion": "0.12.0",
-    "description": "Tareador diario lateral dentro de Obsidian",
+    "description": "Tareador diario en el panel lateral para gestionar tus tareas",
     "author": "Nabrick",
     "main": "main.js"
 }
