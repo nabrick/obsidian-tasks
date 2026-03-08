@@ -1,0 +1,393 @@
+/* styles.css */
+
+/* Vista lateral */
+
+.tasks-plugin-view {
+  padding: 10px;
+  font-family: var(--font-family);
+  color: var(--text-normal);
+  background: var(--background-primary);
+  overflow-y: auto;
+}
+
+/* Header: contador + toggle */
+.tasks-plugin-view .tasks-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.tasks-plugin-view .tasks-counter {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.tasks-plugin-view .tasks-counter.has-pending {
+  color: var(--text-accent);
+}
+
+.tasks-plugin-view .tasks-toggle-btn {
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 12px;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tasks-plugin-view .tasks-toggle-btn:hover,
+.tasks-plugin-view .tasks-toggle-btn.active {
+  background: var(--interactive-accent);
+  color: var(--interactive-on-accent);
+  border-color: var(--interactive-accent);
+}
+
+/* Cabeceras de fecha */
+.tasks-plugin-view h3 {
+  margin-top: 14px;
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--background-modifier-border);
+  padding-bottom: 3px;
+}
+
+.tasks-plugin-view h3.today-header {
+  color: var(--text-accent);
+}
+
+.tasks-plugin-view h3.overdue-header {
+  color: var(--text-error, #e05252);
+}
+
+/* Tarea */
+
+.tasks-plugin-view .task-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  background: var(--background-secondary);
+  padding: 7px 8px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  gap: 8px;
+  border-left: 3px solid transparent;
+  transition: border-color 0.15s;
+}
+
+/* Bordes de prioridad */
+.tasks-plugin-view .task-item.priority-high   { border-left-color: #e05252; }
+.tasks-plugin-view .task-item.priority-medium { border-left-color: #e0a252; }
+.tasks-plugin-view .task-item.priority-low    { border-left-color: #52a852; }
+
+.tasks-plugin-view .task-item input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.tasks-plugin-view .task-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.tasks-plugin-view .task-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+
+.tasks-plugin-view .priority-icon {
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+.tasks-plugin-view .task-title {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--text-normal);
+}
+
+.tasks-plugin-view .desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Acciones */
+.tasks-plugin-view .task-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.tasks-plugin-view .task-actions button {
+  background: transparent;
+  border: none;
+  padding: 2px 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  opacity: 0.5;
+  transition: opacity 0.15s, background 0.15s;
+}
+
+.tasks-plugin-view .task-actions button:hover {
+  opacity: 1;
+  background: var(--background-modifier-hover);
+}
+
+.tasks-plugin-view .task-actions button.delete-btn:hover {
+  background: rgba(224, 82, 82, 0.15);
+}
+
+/* Estado vacío */
+
+.tasks-plugin-view .tasks-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.tasks-plugin-view .tasks-empty-icon {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.tasks-plugin-view .tasks-empty p {
+  font-size: 13px;
+  margin: 0;
+}
+
+/* Modal */
+
+.tasks-plugin-modal {
+  padding: 20px;
+  background: var(--background-primary);
+  color: var(--text-normal);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .tasks-plugin-modal {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    height: 100dvh;
+    max-height: 100dvh;
+    overflow-y: auto;
+    padding-bottom: 80px;
+    z-index: 9999;
+  }
+}
+
+.tasks-plugin-modal h2 {
+  margin-bottom: 4px;
+  font-size: 16px;
+}
+
+.tasks-plugin-modal .modal-task-title {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0 0 6px;
+  font-style: italic;
+}
+
+.tasks-plugin-modal input[type="text"],
+.tasks-plugin-modal input[type="date"],
+.tasks-plugin-modal textarea,
+.tasks-plugin-modal select {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+  color: var(--text-normal);
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tasks-plugin-modal textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.tasks-plugin-modal .priority-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tasks-plugin-modal .priority-wrap label {
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.tasks-plugin-modal .priority-wrap select {
+  flex: 1;
+}
+
+.tasks-plugin-modal button {
+  background: var(--interactive-accent);
+  color: var(--interactive-on-accent);
+  border: none;
+  padding: 7px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  align-self: flex-start;
+  transition: background 0.15s;
+}
+
+.tasks-plugin-modal button:hover {
+  background: var(--interactive-accent-hover);
+}
+
+/* Subtareas (vista lateral) */
+
+.tasks-plugin-view .subtasks-wrap {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tasks-plugin-view .subtasks-progress-bar {
+  height: 4px;
+  background: var(--background-modifier-border);
+  border-radius: 2px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.tasks-plugin-view .subtasks-progress-fill {
+  height: 100%;
+  background: var(--interactive-accent);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.tasks-plugin-view .subtasks-counter {
+  font-size: 11px;
+  color: var(--text-muted);
+  align-self: flex-end;
+  margin-top: -2px;
+}
+
+.tasks-plugin-view .subtask-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-left: 4px;
+  border-left: 2px solid var(--background-modifier-border);
+}
+
+.tasks-plugin-view .subtask-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tasks-plugin-view .subtask-item input[type="checkbox"] {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
+.tasks-plugin-view .subtask-title {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.tasks-plugin-view .subtask-title.done {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+/* Subtareas (modal editor) */
+
+.tasks-plugin-modal .subtasks-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.tasks-plugin-modal .subtasks-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tasks-plugin-modal .subtask-editor-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tasks-plugin-modal .subtask-editor-row input[type="text"] {
+  flex: 1;
+  padding: 4px 7px;
+  font-size: 13px;
+}
+
+.tasks-plugin-modal .subtask-editor-row input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.tasks-plugin-modal .subtask-remove-btn {
+  background: transparent !important;
+  color: var(--text-muted) !important;
+  border: none !important;
+  padding: 2px 5px !important;
+  font-size: 12px !important;
+  cursor: pointer;
+  flex-shrink: 0;
+  align-self: auto;
+}
+
+.tasks-plugin-modal .subtask-remove-btn:hover {
+  color: var(--text-error, #e05252) !important;
+  background: transparent !important;
+}
+
+.tasks-plugin-modal .subtask-add-btn {
+  background: transparent !important;
+  color: var(--text-accent) !important;
+  border: 1px dashed var(--background-modifier-border) !important;
+  font-size: 12px !important;
+  padding: 4px 8px !important;
+  align-self: flex-start;
+  cursor: pointer;
+}
+
+.tasks-plugin-modal .subtask-add-btn:hover {
+  background: var(--background-modifier-hover) !important;
+}

@@ -1,0 +1,9 @@
+{
+    "id": "tasks-plugin",
+    "name": "Tareas",
+    "version": "1.0.0",
+    "minAppVersion": "0.12.0",
+    "description": "Tareador diario lateral dentro de Obsidian",
+    "author": "Nabrick",
+    "main": "main.js"
+}
