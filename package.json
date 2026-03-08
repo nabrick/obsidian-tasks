@@ -1,7 +1,7 @@
 {
     "name": "tasks-plugin",
     "version": "1.0.0",
-    "description": "Tareador diario lateral dentro de Obsidian",
+    "description": "Tareador diario en el panel lateral para gestionar tus tareas",
     "main": "main.js",
     "scripts": {
       "build": "echo 'No build step required for Obsidian plugin.'"
